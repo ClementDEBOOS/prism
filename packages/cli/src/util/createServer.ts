@@ -32,7 +32,7 @@ const createMultiProcessPrism: CreatePrism = async options => {
   if (cluster.isMaster) {
     cluster.setupMaster({ silent: true });
 
-    signale.await({ prefix: chalk.bgWhiteBright.black('[CLI]'), message: 'Starting Prism…' });
+    signale.await({ prefix: chalk.bgWhiteBright.black('[CLI]'), message: 'Starting Prism!…' });
 
     const worker = cluster.fork();
 
@@ -53,7 +53,7 @@ const createMultiProcessPrism: CreatePrism = async options => {
 };
 
 const createSingleProcessPrism: CreatePrism = options => {
-  signale.await({ prefix: chalk.bgWhiteBright.black('[CLI]'), message: 'Starting Prism…' });
+  signale.await({ prefix: chalk.bgWhiteBright.black('[CLI]'), message: 'Starting Prism!…' });
 
   const logStream = new PassThrough();
   const logInstance = createLogger('CLI', cliSpecificLoggerOptions, logStream);
@@ -102,7 +102,7 @@ async function createPrismServerWithLogger(options: CreateBaseServerOptions, log
       `${resource.method.toUpperCase().padEnd(10)} ${address}${transformPathParamsValues(path, chalk.bold.cyan)}`
     );
   });
-  logInstance.start(`Prism is listening on ${address}`);
+  logInstance.start(`Prism is listening on on ${address}`);
 
   return server;
 }
@@ -136,6 +136,7 @@ type CreateBaseServerOptions = {
   document: string;
   multiprocess: boolean;
   errors: boolean;
+  //TODO add company proxy
 };
 
 export interface CreateProxyServerOptions extends CreateBaseServerOptions {
